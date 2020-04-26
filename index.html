@@ -1,6 +1,8 @@
 <!-- Code from d3-graph-gallery.com -->
 <!DOCTYPE html>
 <head>
+    <link rel="stylesheet" href="css.css">
+
 <meta charset="utf-8">
 </head>
 <body>
@@ -9,11 +11,12 @@
 
 <!-- Initialize a select button -->
 <select id="selectButton"></select>
-
+<canvas id="canvas-image-blending"></canvas>
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 
 <!-- Color Scale -->
+<script type='text/javascript' src='../assets/granim.min.js'></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
 </body>
