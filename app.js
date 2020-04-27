@@ -1,6 +1,6 @@
 var margin = {top: 5, right: 100, bottom: 30, left: 30},
-    width = 650 - margin.left - margin.right,
-    height = 550 - margin.top - margin.bottom;
+    width = 1550 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -12,6 +12,9 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
+
+var unemployAPI = 'http://home.unheard.org/api/v1.0/unemploymentRate'
+var divorceAPI = 'http://home.unheard.org/api/v1.0/stateDivorceRate'
 d3.csv("JoinedData.csv", function(data) {
 
     // List of groups 
@@ -26,7 +29,8 @@ d3.csv("JoinedData.csv", function(data) {
       .append('circle')
         .attr("cx", function(d) { return x(+d[year]) })
         .attr("cy", function(d) { return y(+d[`Rate${year}`] )})
-        .attr("r", 5)
+        .attr("r", 16)
+        .attr("opacity",".5")
         .style("fill", "blue");
     }
     
@@ -35,8 +39,10 @@ d3.csv("JoinedData.csv", function(data) {
         .data(data)
         .enter()
         .append("text")
+        .classed("text-circles", true)
           .text("")
-          .text(function(d){ return d.State})
+          .attr("text-anchor", "middle")
+          .text(function(d){ return d.abbr})
           .attr("x", function(d) {
             return x(d[year]);})//location X
           .attr("y", function(d) {
@@ -45,7 +51,24 @@ d3.csv("JoinedData.csv", function(data) {
           .attr("font_size","10px")
           .attr("fill","black");
     }
-  
+    
+ svg.append("text")
+    .attr("x", (width/2))
+    .attr("y", 595)
+    .attr("font-size","16px")
+    .classed("axis-text", true)
+    .text("Divorce Rate");
+
+  // append y axis
+  svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -4 - margin.left)
+    .attr("x", 0 - (height / 2))
+    .attr("dy", "1em")
+    .attr("font-size","16px")
+    .classed("axis-text", true)
+    .text("Unemployment Rate");
+    
     // add the options to the button
     d3.select("#selectButton")
       .selectAll('myOptions')
@@ -57,9 +80,10 @@ d3.csv("JoinedData.csv", function(data) {
 
     // Add X axis --> it is a date format
     var x = d3.scaleLinear()
-      .domain([0,10])
+      .domain([0,5])
       .range([ 0, width ]);
-    svg.append("g")
+      
+    var xaxis = svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
       //.text("Divorce Rate");
@@ -128,8 +152,14 @@ d3.csv("JoinedData.csv", function(data) {
       // Give these new data to update line
 
 
-
+      var adjustedX = Math.max(...data.map(x => parseFloat(x[`${selectedOption}`])))
       var adjustedY = Math.max(...data.map(x => parseFloat(x[`Rate${selectedOption}`])))
+      console.log(adjustedX)
+      x
+        .domain([0,adjustedX+0.5])
+      xaxis.transition()
+        .duration(1000)
+        .call(d3.axisBottom(x));
       y
         .domain([0,adjustedY+1])
       yaxis.transition()
