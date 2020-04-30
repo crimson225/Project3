@@ -3,7 +3,7 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
   var CSV = '';    
   //Set Report title in first row or line
-  CSV += ReportTitle + '\r\n\n';
+  //CSV += ReportTitle + '\r\n\n';
   //This condition will generate the Label/Header
   if (ShowLabel) {
       var row = "";
@@ -63,7 +63,6 @@ fetch('http://home.unheard.org/api/v1.0/getData')
 });
 
 
-
 //START of d3 Viz 
 
 
@@ -87,7 +86,7 @@ var svg = d3.select("#my_dataviz")
 var unemploymentKey = function(year){
   return `Rate${year}`
 }
-d3.csv("MyReport_Blah3.csv", function(data) {
+d3.csv("MyReport_Blah.csv", function(data) {
 // d3.csv("JoinedData.csv", function(data) {
     
     // List of groups 
