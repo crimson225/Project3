@@ -20,27 +20,47 @@
 <select id="selectButton"></select>
 <canvas id="canvas-image-blending"></canvas>
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
-<div class="row">
-    <div class="col-xs-12 col-md-9">
-        <div class="article">
-            <p>The data points at the Zero on the Y-Axis are the states that didn't submit any Divorce Rate data for that given year.</p>
-            <ul style="list-style-type:none;">
-                <li class="str">California: 2000-2018 (No Data Available)</li>
-                <li class="str">Georgia: 2000-2016 (No Data Available)</li>
-                <li class="str">Hawaii: 2003-2018 (No Data Available)</li>
-                <li class="str">Indiana: 2000-2018 (No Data Available)</li>
-                <li class="str">Louisiana: 2000,2001,2004-2012 (No Data Available)</li>
-                <li class="str">Minnesota: 2005-2018 (No Data Available)</li>
-                <li class="str">New Mexico: 2016-2018 (No Data Available)</li>
-                <li class="str">Ohio: 2000-2003 (No Data Available)</li>
-            </ul>
+<div id="my_dataviz"></div> 
+<div>
+    <div class= "containter">
+        <div class= "row">
+            <div class="col-xs-12 col-md-12">
+                <h1>Unemployment Rate by State In Chosen Year</h1>
+        </div>
+    </div> 
+</div>
+  <div id="Unemployment"></div>
+  <div class= "containter">
+    <div class= "row">
+        <div class="col-xs-12 col-md-12">
+            <h1>Divorce Rate by United States In Chosen Year</h1>
+    </div>
+</div> 
+</div>
+    <div id="Divorce"></div>
+       <!-- <div id="evenmore"></div> -->
+       <div class="row">
+        <div class="col-xs-12 col-md-9">
+            <div class="article">
+                <p>The data points at the Zero on the Y-Axis are the states that didn't submit any Divorce Rate data for that given year.</p>
+                <ul style="list-style-type:none;">
+                    <li class="str">California: 2000-2018 (No Data Available)</li>
+                    <li class="str">Georgia: 2000-2016 (No Data Available)</li>
+                    <li class="str">Hawaii: 2003-2018 (No Data Available)</li>
+                    <li class="str">Indiana: 2000-2018 (No Data Available)</li>
+                    <li class="str">Louisiana: 2000,2001,2004-2012 (No Data Available)</li>
+                    <li class="str">Minnesota: 2005-2018 (No Data Available)</li>
+                    <li class="str">New Mexico: 2016-2018 (No Data Available)</li>
+                    <li class="str">Ohio: 2000-2003 (No Data Available)</li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+        </div>
 <!-- Color Scale -->
-<script type='text/javascript' src='../assets/granim.min.js'></script>
+<script type='text/javascript' src='granim.min.js'></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
+
 </body>
 </html>
